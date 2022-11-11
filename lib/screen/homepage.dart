@@ -1,24 +1,20 @@
+import 'package:country_lister/models/CountriesModel.dart';
+import 'package:country_lister/utils/const/provider_dart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-
-          ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _data = ref.watch(countriesDataProvider);
+    return SafeArea(child: Scaffold(
+      body: Center(
+        child: Container(
+          color: Colors.blue,
         ),
-      ),
-    );
+      ),));
   }
 }
+

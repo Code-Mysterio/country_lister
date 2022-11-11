@@ -1,8 +1,9 @@
 import 'package:country_lister/screen/homepage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const CountryListerApp());
+  runApp(ProviderScope(child: const CountryListerApp(),),);
 }
 
 class CountryListerApp extends StatelessWidget {
