@@ -84,4 +84,7 @@ I was able to solve them as listed below:
 ### Link to my app on Appetize.io
 [Link to my Appetizer](https://appetize.io/app/3h4tfuyy3bpfeqyla26bt7g3ii?device=pixel6&osVersion=12.0&scale=75)
 
+QUICK NOTIFICATION TO THE MENTOR:
+My Appetize did not give me all the features I implemented, I tried different things and I upload many times, its still not showing my app full functionality(Everything was working fine before now, I don't know what happened).
+(The functionality its not showing include: Dark mode, Details of Countries on the details Page. Thank You)
 
