@@ -15,7 +15,7 @@ Sometimes it can be frustrating that simple details of a country are difficult t
 This app was created with the intention of providing its users with information about every country in the world without the need to go online and search for country information in an unorganized or random manner.
 
 If you want to learn about a country quickly, this app serves as a country explorer, allowing you to learn about a country in a few clicks. The feature details of the app include:
-- search
+- search option
 - country list
 - details page
 - dark mode option
@@ -57,8 +57,6 @@ At this point in the app, only one library is used. Below are the details of the
 ### Description of features I'd like to add if I had more time.
 If I had enough time, features I'll like to incorporate into the app include;
 - implement the search function on the app.
-- Create a details page that displays information about a selected or searched country.
-  Add a dark mode to my app.
 - Include a filter function in the app's country list.
 - do a quick unit and widget test for the app.
 
@@ -69,6 +67,7 @@ It is inevitable to always come across challenges while building an app. For thi
 - I'm running a flutter build on my project to generate the.apk file; this command is still new to me, but I'm only using it for the second time.
 - A data handling error when creating country names appears as a list on the home page because I am getting the data from a map and riverpod is used to handle the data when it is collected from the API.
 - An undocumented error occurred when I attempted to create my Countries model from the API (converting JSON to Dart code).
+- I faced some errors trying to label the sort list with the first letter of the country (Not yet sorted).
 
 
 I was able to solve them as listed below:
@@ -79,10 +78,10 @@ I was able to solve them as listed below:
 
 
 ### Link to the APK file
-[Link to my APK file]()
+[Link to my APK file](https://drive.google.com/file/d/1I-mvXeCtyBwWIS5_ilGWztBI0P4gXtOU/view?usp=sharing)
 
 
 ### Link to my app on Appetize.io
-[Link to my Appetizer](https://www.example.com)
+[Link to my Appetizer](https://appetize.io/app/3h4tfuyy3bpfeqyla26bt7g3ii?device=pixel6&osVersion=12.0&scale=75)
 
 

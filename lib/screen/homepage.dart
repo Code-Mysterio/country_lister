@@ -13,6 +13,7 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final data = ref.watch(countriesDataProvider);
     final themeMode = ref.watch(themeModeProvider);
+    TextEditingController editingController = TextEditingController();
 
     return SafeArea(
       child: Scaffold(
@@ -46,7 +47,8 @@ class HomePage extends ConsumerWidget {
               height: 20.0,
             ),
             TextField(
-              onTap: () {},
+              onChanged: (value) {},
+              controller: editingController,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 filled: true,
@@ -71,18 +73,14 @@ class HomePage extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ButtonOnHomePage(
-                  onTap: () {
-                    print('Im tapped');
-                  },
+                  onTap: () {},
                   icons: Icons.language_outlined,
                   data: 'EN',
                 ),
                 ButtonOnHomePage(
                   icons: Icons.filter_alt_outlined,
                   data: 'Filter',
-                  onTap: () {
-                    print('Im tapped');
-                  },
+                  onTap: () {},
                 ),
               ],
             ),
@@ -150,4 +148,3 @@ class HomePage extends ConsumerWidget {
 // value,
 // textAlign: TextAlign.left,
 // style: TextStyle(
-// color: const Color.fromRGBO(102, 112, 1
