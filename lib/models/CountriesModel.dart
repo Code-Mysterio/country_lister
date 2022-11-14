@@ -35,43 +35,43 @@ class CountriesModel {
 
   CountriesModel(
       {this.name,
-        this.tld,
-        this.cca2,
-        this.ccn3,
-        this.cca3,
-        this.cioc,
-        this.independent,
-        this.status,
-        this.unMember,
-        this.currencies,
-        this.idd,
-        this.capital,
-        this.altSpellings,
-        this.region,
-        this.subregion,
-        this.languages,
-        this.translations,
-        this.latlng,
-        this.landlocked,
-        this.area,
-        this.demonyms,
-        this.flag,
-        this.maps,
-        this.population,
-        this.fifa,
-        this.car,
-        this.timezones,
-        this.continents,
-        this.flags,
-        this.coatOfArms,
-        this.startOfWeek,
-        this.capitalInfo,
-        this.postalCode});
+      this.tld,
+      this.cca2,
+      this.ccn3,
+      this.cca3,
+      this.cioc,
+      this.independent,
+      this.status,
+      this.unMember,
+      this.currencies,
+      this.idd,
+      this.capital,
+      this.altSpellings,
+      this.region,
+      this.subregion,
+      this.languages,
+      this.translations,
+      this.latlng,
+      this.landlocked,
+      this.area,
+      this.demonyms,
+      this.flag,
+      this.maps,
+      this.population,
+      this.fifa,
+      this.car,
+      this.timezones,
+      this.continents,
+      this.flags,
+      this.coatOfArms,
+      this.startOfWeek,
+      this.capitalInfo,
+      this.postalCode});
 
   CountriesModel.fromJson(Map<String, dynamic> json) {
     name = json['name'] != null ? new Name.fromJson(json['name']) : null;
     // tld = json['tld'].cast<String>();
-    tld = json['tld'] == null? []: List.from(json['tld'].map((x)=>x));
+    tld = json['tld'] == null ? [] : List.from(json['tld'].map((x) => x));
     cca2 = json['cca2'];
     ccn3 = json['ccn3'];
     cca3 = json['cca3'];
@@ -84,9 +84,12 @@ class CountriesModel {
         : null;
     idd = json['idd'] != null ? new Idd.fromJson(json['idd']) : null;
     // capital = json['capital'].cast<String>();
-    capital = json['capital'] == null? []: List.from(json['capital'].map((x)=>x));
+    capital =
+        json['capital'] == null ? [] : List.from(json['capital'].map((x) => x));
     // altSpellings = json['altSpellings'].cast<String>();
-    altSpellings = json['altSpellings'] == null? []: List.from(json['altSpellings'].map((x)=>x));
+    altSpellings = json['altSpellings'] == null
+        ? []
+        : List.from(json['altSpellings'].map((x) => x));
     region = json['region'];
     subregion = json['subregion'];
     languages = json['languages'] != null
@@ -293,7 +296,9 @@ class Idd {
   Idd.fromJson(Map<String, dynamic> json) {
     root = json['root'];
     // suffixes = json['suffixes'].cast<String>();
-    suffixes = json['suffixes'] == null? []: List.from(json['suffixes'].map((x)=>x));
+    suffixes = json['suffixes'] == null
+        ? []
+        : List.from(json['suffixes'].map((x) => x));
   }
 
   Map<String, dynamic> toJson() {
@@ -348,29 +353,29 @@ class Translations {
 
   Translations(
       {this.ara,
-        this.bre,
-        this.ces,
-        this.cym,
-        this.deu,
-        this.est,
-        this.fin,
-        this.fra,
-        this.hrv,
-        this.hun,
-        this.ita,
-        this.jpn,
-        this.kor,
-        this.nld,
-        this.per,
-        this.pol,
-        this.por,
-        this.rus,
-        this.slk,
-        this.spa,
-        this.swe,
-        this.tur,
-        this.urd,
-        this.zho});
+      this.bre,
+      this.ces,
+      this.cym,
+      this.deu,
+      this.est,
+      this.fin,
+      this.fra,
+      this.hrv,
+      this.hun,
+      this.ita,
+      this.jpn,
+      this.kor,
+      this.nld,
+      this.per,
+      this.pol,
+      this.por,
+      this.rus,
+      this.slk,
+      this.spa,
+      this.swe,
+      this.tur,
+      this.urd,
+      this.zho});
 
   Translations.fromJson(Map<String, dynamic> json) {
     ara = json['ara'] != null ? new Eng.fromJson(json['ara']) : null;
@@ -546,7 +551,9 @@ class Car {
 
   Car.fromJson(Map<String, dynamic> json) {
     // signs = json['signs'].cast<String>();
-    signs = json['signs'] == null ? []: List<String>.from(json['signs'].map((x)=>x));
+    signs = json['signs'] == null
+        ? []
+        : List<String>.from(json['signs'].map((x) => x));
     side = json['side'];
   }
 
@@ -584,7 +591,8 @@ class CapitalInfo {
 
   CapitalInfo.fromJson(Map<String, dynamic> json) {
     // latlng = json['latlng'].cast<double>();
-    latlng = json['latlng'] == null? []: List.from(json['latlng'].map((x)=>x));
+    latlng =
+        json['latlng'] == null ? [] : List.from(json['latlng'].map((x) => x));
   }
 
   Map<String, dynamic> toJson() {

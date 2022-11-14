@@ -4,9 +4,9 @@ class ButtonOnHomePage extends StatelessWidget {
   final IconData icons;
   final String data;
   final VoidCallback onTap;
-  const ButtonOnHomePage({
-    Key? key, required this.icons, required this.data, required this.onTap
-  }) : super(key: key);
+  const ButtonOnHomePage(
+      {Key? key, required this.icons, required this.data, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +16,18 @@ class ButtonOnHomePage extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.0),
-          border: Border.all(color: Colors.black12, width: 1.2),
-          color: Colors.white,
+          border: Border.all(color: Theme.of(context).hoverColor, width: 1.2),
+          color: Theme.of(context).scaffoldBackgroundColor,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children:  [
+          children: [
             Material(
               color: Colors.transparent,
               child: Icon(
-              icons,
-                color: Colors.black87,
+                icons,
+                color: Theme.of(context).hoverColor,
                 size: 25.0,
               ),
             ),
@@ -37,11 +37,11 @@ class ButtonOnHomePage extends StatelessWidget {
             Text(
               data,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Axiforma',
                 fontSize: 13.0,
                 fontWeight: FontWeight.w500,
-                color: Colors.black,
+                color: Theme.of(context).hoverColor,
               ),
             ),
           ],

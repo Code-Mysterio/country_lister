@@ -1,5 +1,7 @@
 import 'package:country_lister/models/CountriesModel.dart';
+import 'package:country_lister/screen/details_screen.dart';
 import 'package:country_lister/utils/const/provider_dart.dart';
+import 'package:country_lister/utils/const/theme_provider.dart';
 import 'package:country_lister/utils/custom_widget/button_on_homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,11 +11,13 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _data = ref.watch(countriesDataProvider);
+    final data = ref.watch(countriesDataProvider);
+    final themeMode = ref.watch(themeModeProvider);
+
     return SafeArea(
       child: Scaffold(
           body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             Row(
@@ -23,11 +27,19 @@ class HomePage extends ConsumerWidget {
                   'Explore.',
                   style: TextStyle(
                       fontFamily: 'ElsieSwashCaps',
-                  fontSize: 35.0,
-                  fontWeight: FontWeight.w900),
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.w900),
                 ),
                 IconButton(
-                    onPressed: () {}, icon: Icon(Icons.wb_sunny_outlined))
+                    onPressed: () {
+                      ref.read(themeModeProvider.notifier).state =
+                          themeMode == ThemeMode.dark
+                              ? ThemeMode.light
+                              : ThemeMode.dark;
+                    },
+                    icon: Icon(themeMode == ThemeMode.dark
+                        ? Icons.wb_sunny
+                        : Icons.wb_sunny_outlined))
               ],
             ),
             const SizedBox(
@@ -36,17 +48,17 @@ class HomePage extends ConsumerWidget {
             TextField(
               onTap: () {},
               textAlign: TextAlign.center,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.black12,
+                fillColor: Theme.of(context).primaryColor,
                 hintText: 'Search Country',
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   fontFamily: 'Axiforma',
                   fontSize: 16.0,
                   fontWeight: FontWeight.w300,
                 ),
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
+                prefixIcon: const Icon(Icons.search),
+                border: const OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.all(Radius.circular(4)),
                 ),
@@ -78,34 +90,45 @@ class HomePage extends ConsumerWidget {
               height: 40.0,
             ),
             Expanded(
-              child: _data.when(
+              child: data.when(
                 data: (data) {
                   List<CountriesModel> countriesList =
                       data.map((e) => e).toList();
+                  var country = countriesList;
+                  country.sort((a, b) => a.name!.official
+                      .toString()
+                      .compareTo(b.name!.official.toString()));
                   return ListView.builder(
                       itemCount: data.length,
                       itemBuilder: (_, index) {
-                    return ListTile(
-                      leading: Container(
-                        height: 35,
-                        width: 45,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: NetworkImage(countriesList[index]
-                                    .flags!
-                                    .png
-                                    .toString()))),
-                      ),
-                      title:
-                          Text(countriesList[index].name!.official.toString()),
-                    );
-                  });
+                        return ListTile(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetailsPage(e: countriesList[index])));
+                          },
+                          leading: Container(
+                            height: 35,
+                            width: 45,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(countriesList[index]
+                                        .flags!
+                                        .png
+                                        .toString()))),
+                          ),
+                          title: Text(
+                              countriesList[index].name!.official.toString()),
+                        );
+                      });
                 },
-                error: (error, s) => Text(error.toString()),
+                error: (error, _) => Text(error.toString()),
                 loading: () => const Center(
-                  child: LinearProgressIndicator(),
+                  child: CircularProgressIndicator(),
                 ),
               ),
             ),
@@ -115,3 +138,16 @@ class HomePage extends ConsumerWidget {
     );
   }
 }
+
+//
+// return GroupedListView(
+// shrinkWrap: true,
+// elements: snapshot.data!,
+// groupBy: (element) => element.name!.common![0],
+// groupComparator: (value1, value2) => value2.compareTo(value1),
+// order: GroupedListOrder.DESC,
+// groupSeparatorBuilder: (String value) => Text(
+// value,
+// textAlign: TextAlign.left,
+// style: TextStyle(
+// color: const Color.fromRGBO(102, 112, 1

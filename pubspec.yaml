@@ -37,6 +37,7 @@ dependencies:
   riverpod: ^2.1.1
   http: ^0.13.5
   flutter_riverpod: ^2.1.1
+  grouped_list: ^5.1.2
 
 dev_dependencies:
   flutter_test:
